@@ -3,7 +3,6 @@ require 'set'
 class UnionFind 
   attr_reader :number_of_elements
   attr_reader :parents
-  attr_reader :sizes
 
   def initialize(n)
     @number_of_elements = n
@@ -69,4 +68,8 @@ class UnionFind
   def inspect 
     self.to_s 
   end
+
+  private 
+
+  attr_reader :sizes
 end
