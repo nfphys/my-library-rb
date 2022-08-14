@@ -38,7 +38,7 @@ class Heap
     return top if ary.empty? 
     
     node = 0
-    while node * 2 + 1 < ary.size 
+    while left_child(node) < ary.size 
       left_child  = self.left_child(node)
       right_child = self.right_child(node)
 
