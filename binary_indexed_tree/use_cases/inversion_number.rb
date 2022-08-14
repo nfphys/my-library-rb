@@ -1,5 +1,6 @@
 require_relative '../lib/binary_indexed_tree'
 
+# https://atcoder.jp/contests/abc264/tasks/abc264_d
 def calc_inversion_number(ary)
   sorted_ary = ary.sort 
 
@@ -17,7 +18,7 @@ def calc_inversion_number(ary)
     order[a] = i
   end
 
-  # freq_bit.sum(k): 配列aryにおける1~k番目の値の出現頻度
+  # freq_bit.sum(k): 配列ary[0...j]における1~k番目の値の出現頻度
   freq_bit = BinaryIndexedTree.new(ary_set.size)
   inversion_number = 0
   ary.each.with_index do |a, j| 
