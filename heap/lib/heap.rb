@@ -15,14 +15,14 @@ class Heap
 
   def push(x)
     ary << x
-    i = ary.size - 1
-    while i > 0 
-      parent = (i - 1) / 2 
+    node = ary.size - 1
+    while node > 0 
+      parent = self.parent(node)
       break if ary[parent] >= x 
-      ary[i] = ary[parent]
-      i = parent 
+      ary[node] = ary[parent]
+      node = parent 
     end
-    ary[i] = x
+    ary[node] = x 
   end
 
   def top 
@@ -37,21 +37,22 @@ class Heap
     x = ary.pop
     return top if ary.empty? 
     
-    i = 0
-    while i * 2 + 1 < ary.size 
-      # 子頂点同士を比較して大きい方を child1 とする
-      child1 = i * 2 + 1
-      child2 = i * 2 + 2
-      if child2 < ary.size && ary[child2] > ary[child1] 
-        child1 = child2 
+    node = 0
+    while node * 2 + 1 < ary.size 
+      left_child  = self.left_child(node)
+      right_child = self.right_child(node)
+
+      larger_child = left_child
+      if right_child < ary.size && ary[right_child] > ary[left_child] 
+        larger_child = right_child
       end
 
-      break if ary[child1] <= x
+      break if ary[larger_child] <= x 
 
-      ary[i] = ary[child1]
-      i = child1
+      ary[node] = ary[larger_child]
+      node = larger_child 
     end
-    ary[i] = x
+    ary[node] = x
 
     top
   end
@@ -70,5 +71,19 @@ class Heap
 
   def inspect 
     ary.inspect
+  end
+
+  private 
+
+  def parent(node)
+    (node - 1) / 2 
+  end
+
+  def left_child(node)
+    2 * node + 1
+  end
+
+  def right_child(node)
+    2 * node + 2 
   end
 end
