@@ -1,0 +1,2 @@
+class BinaryIndexedTree 
+end
