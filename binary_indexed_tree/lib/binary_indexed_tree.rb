@@ -6,15 +6,15 @@ class BinaryIndexedTree
     @size = n 
     @nodes = Array.new(n+1, 0)
     if v_init 
-      (1..@size).each do |i| 
+      (0...@size).each do |i| 
         add(i, v_init)
       end
     end
   end
 
-  # v[a] += w 
+  # v[a+1] += w 
   def add(a, w)
-    x = a
+    x = a+1
     while x <= size 
       nodes[x] += w 
       x += interval_length(x)
@@ -24,7 +24,7 @@ class BinaryIndexedTree
   # v[1] + ... + v[a]
   def sum(a)
     prefix_sum = 0 
-    x = a 
+    x = a
     while x > 0 
       prefix_sum += nodes[x]
       x -= interval_length(x)
@@ -38,12 +38,12 @@ class BinaryIndexedTree
       prefix_sums[a] = sum(a)
     end
 
-    ary = Array.new(size+1)
-    (1..size).each do |a| 
-      ary[a] = prefix_sums[a] - prefix_sums[a-1]
+    ary = Array.new(size)
+    (0...size).each do |a| 
+      ary[a] = prefix_sums[a+1] - prefix_sums[a]
     end
 
-    ary[1..size] 
+    ary 
   end
 
   private 
