@@ -2,7 +2,6 @@ require 'set'
 
 class UnionFind 
   attr_reader :number_of_elements
-  attr_reader :parents
 
   def initialize(n)
     @number_of_elements = n
@@ -11,8 +10,8 @@ class UnionFind
   end
 
   def root(x) 
-    return x if self.parents[x].nil?
-    self.parents[x] = self.root(parents[x]) 
+    return x if parents[x].nil?
+    parents[x] = self.root(parents[x]) 
   end
 
   def same?(x, y)
@@ -72,4 +71,5 @@ class UnionFind
   private 
 
   attr_reader :sizes
+  attr_reader :parents
 end
