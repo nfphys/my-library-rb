@@ -1,10 +1,10 @@
-require_relative '../lib/heap'
+require_relative '../lib/max_heap'
 
 require 'minitest/autorun'
 
-class HeapTest < Minitest::Test 
-  def test_heap 
-    heap = Heap.new([5, 3, 7, 1])
+class MaxHeapTest < Minitest::Test 
+  def test_max_heap 
+    heap = MaxHeap.new([5, 3, 7, 1])
     assert_equal 7, heap.top
     assert_equal [7, 3, 5, 1], heap.to_a
 

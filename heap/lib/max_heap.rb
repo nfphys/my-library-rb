@@ -1,18 +1,8 @@
-class Heap 
+require_relative 'heap_base'
 
-  private 
+class MaxHeap < Heap::Base 
+  attr_reader :ary 
   
-  attr_reader :ary  
-
-  public 
-
-  def initialize(ary = [])
-    @ary = []
-    ary.each do |a| 
-      self.push(a)
-    end    
-  end
-
   def push(x)
     ary << x
     node = ary.size - 1
@@ -23,11 +13,6 @@ class Heap
       node = parent 
     end
     ary[node] = x 
-  end
-
-  def top 
-    return if ary.empty? 
-    ary.first
   end
 
   def pop 
@@ -55,35 +40,5 @@ class Heap
     ary[node] = x
 
     top
-  end
-
-  def size 
-    ary.size 
-  end
-
-  def to_a 
-    ary
-  end
-
-  def to_s 
-    ary.to_s 
-  end
-
-  def inspect 
-    ary.inspect
-  end
-
-  private 
-
-  def parent(node)
-    (node - 1) / 2 
-  end
-
-  def left_child(node)
-    2 * node + 1
-  end
-
-  def right_child(node)
-    2 * node + 2 
   end
 end
