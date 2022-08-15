@@ -80,7 +80,7 @@ class BinarySearchTree
     return false if node.nil? 
 
     if node.left && node.right
-      successor = find_successor(node)
+      successor = inorder_successor(node)
       successor_key = successor.key 
       delete(successor_key)
       node.key = successor_key
@@ -206,7 +206,7 @@ class BinarySearchTree
   end
 
   # 通りがけ順でnodeの次のノードを見つける
-  def find_successor(node)
+  def inorder_successor(node)
     next_node = node.right 
     current_node = nil 
     while next_node 
