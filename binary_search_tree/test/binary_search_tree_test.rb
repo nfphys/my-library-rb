@@ -5,12 +5,12 @@ require 'minitest/autorun'
 class BinarySearchTreeTest < Minitest::Test 
   def test_insert_case1
     bst = BinarySearchTree.new([7, 12, 2, 5, 2, 8, 3, 6, 15, 11, 9])
-    assert_equal [7, 2, 2, 5, 3, 6, 12, 8, 11, 9, 15], bst.to_preorder.map(&:value)
+    assert_equal [7, 2, 2, 5, 3, 6, 12, 8, 11, 9, 15], bst.to_preorder.map(&:key)
   end
 
   def test_insert_case2 
     bst = BinarySearchTree.new([1, 2, 3, 1, 4, 5, 6])
-    assert_equal [1, 1, 2, 3, 4, 5, 6], bst.to_preorder.map(&:value)
+    assert_equal [1, 1, 2, 3, 4, 5, 6], bst.to_preorder.map(&:key)
   end
 
   def test_left_rotation_case1
@@ -22,24 +22,24 @@ class BinarySearchTreeTest < Minitest::Test
   def test_left_rotation_case2 
     bst = BinarySearchTree.new([1])
     bst.left_rotation(bst.root)
-    assert_equal [1], bst.to_preorder.map(&:value)
+    assert_equal [1], bst.to_preorder.map(&:key)
     # assert_equal [0], bst.to_preorder.map(&:height)
   end
 
   def test_left_rotation_case3 
     bst = BinarySearchTree.new([1, 2])
     bst.left_rotation(bst.root)
-    assert_equal [2, 1], bst.to_preorder.map(&:value)
+    assert_equal [2, 1], bst.to_preorder.map(&:key)
     # assert_equal [1, 0], bst.to_preorder.map(&:height)
   end
 
   def test_left_rotation_case4 
     bst = BinarySearchTree.new([100, 50, 200, 120])
     bst.left_rotation(bst.root)
-    assert_equal [200, 100, 50, 120], bst.to_preorder.map(&:value)
+    assert_equal [200, 100, 50, 120], bst.to_preorder.map(&:key)
     # assert_equal [2, 1, 0, 0], bst.to_preorder.map(&:height)
     bst.left_rotation(bst.root.left)
-    assert_equal [200, 120, 100, 50], bst.to_preorder.map(&:value)
+    assert_equal [200, 120, 100, 50], bst.to_preorder.map(&:key)
     # assert_equal [3, 2, 1, 0], bst.to_preorder.map(&:height)
   end
 
@@ -52,24 +52,24 @@ class BinarySearchTreeTest < Minitest::Test
   def test_right_rotation_case2 
     bst = BinarySearchTree.new([1])
     bst.right_rotation(bst.root)
-    assert_equal [1], bst.to_preorder.map(&:value)
+    assert_equal [1], bst.to_preorder.map(&:key)
     # assert_equal [0], bst.to_preorder.map(&:height)
   end
 
   def test_right_rotation_case3 
     bst = BinarySearchTree.new([2, 1])
     bst.right_rotation(bst.root)
-    assert_equal [1, 2], bst.to_preorder.map(&:value)
+    assert_equal [1, 2], bst.to_preorder.map(&:key)
     # assert_equal [1, 0], bst.to_preorder.map(&:height)
   end
 
   def test_right_rotation_case4 
     bst = BinarySearchTree.new([100, 50, 200, 120])
     bst.right_rotation(bst.root)
-    assert_equal [50, 100, 200, 120], bst.to_preorder.map(&:value)
+    assert_equal [50, 100, 200, 120], bst.to_preorder.map(&:key)
     # assert_equal [3, 2, 1, 0], bst.to_preorder.map(&:height)
     bst.right_rotation(bst.root.right.right)
-    assert_equal [50, 100, 120, 200], bst.to_preorder.map(&:value)
+    assert_equal [50, 100, 120, 200], bst.to_preorder.map(&:key)
     # assert_equal [3, 2, 1, 0], bst.to_preorder.map(&:height)
   end
 
@@ -126,33 +126,33 @@ class BinarySearchTreeTest < Minitest::Test
   def test_delete_case3
     bst = BinarySearchTree.new([2, 1])
     assert bst.delete(2)
-    assert_equal [1], bst.to_preorder.map(&:value)
+    assert_equal [1], bst.to_preorder.map(&:key)
     assert bst.delete(1)
-    assert_equal [], bst.to_preorder.map(&:value)
+    assert_equal [], bst.to_preorder.map(&:key)
   end
 
   def test_delete_case4
     bst = BinarySearchTree.new([1, 2])
     assert bst.delete(1)
-    assert_equal [2], bst.to_preorder.map(&:value)
+    assert_equal [2], bst.to_preorder.map(&:key)
     assert bst.delete(2)
-    assert_equal [], bst.to_preorder.map(&:value)
+    assert_equal [], bst.to_preorder.map(&:key)
   end
 
   def test_delete_case5
     bst = BinarySearchTree.new([100, 50, 200, 120])
     assert bst.delete(100)
-    assert_equal [120, 50, 200], bst.to_preorder.map(&:value)
+    assert_equal [120, 50, 200], bst.to_preorder.map(&:key)
   end
 
   def test_delete_case6
     bst = BinarySearchTree.new([7, 12, 2, 5, 2, 8, 3, 6, 15, 11, 9])
     assert bst.delete(7)
-    assert_equal [8, 2, 2, 5, 3, 6, 12, 11, 9, 15], bst.to_preorder.map(&:value)
+    assert_equal [8, 2, 2, 5, 3, 6, 12, 11, 9, 15], bst.to_preorder.map(&:key)
     assert bst.delete(12)
-    assert_equal [8, 2, 2, 5, 3, 6, 15, 11, 9], bst.to_preorder.map(&:value)
+    assert_equal [8, 2, 2, 5, 3, 6, 15, 11, 9], bst.to_preorder.map(&:key)
     assert bst.delete(2)
-    assert_equal [8, 3, 2, 5, 6, 15, 11, 9], bst.to_preorder.map(&:value)
+    assert_equal [8, 3, 2, 5, 6, 15, 11, 9], bst.to_preorder.map(&:key)
   end
 
   def test_height_case1 

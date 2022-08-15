@@ -1,5 +1,6 @@
 class Node 
-  # selfの値
+  attr_accessor :key 
+
   attr_accessor :value
 
   # selfを根とする部分木の高さ
@@ -14,10 +15,11 @@ class Node
   # selfの右の子ノード
   attr_reader :right 
 
-  def initialize(value:)
+  def initialize(key:, value:nil)
     @parent = nil 
     @left   = nil  
     @right  = nil  
+    @key    = key 
     @value  = value
     @height = 0
   end
@@ -59,6 +61,7 @@ class Node
     @parent = nil 
     @left   = nil  
     @right  = nil  
+    @key    = nil 
     @value  = nil
     @height = 0
   end

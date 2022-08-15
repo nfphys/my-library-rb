@@ -14,14 +14,14 @@ class BinarySearchTree
       return 
     end
 
-    ary.each do |value|
-      self.insert(value)
+    ary.each do |key|
+      self.insert(key)
     end
   end
 
-  # valueを値に持つノードを挿入
-  def insert(value)
-    inserted_node = Node.new(value: value)
+  # 指定されたキーを持つノードを挿入
+  def insert(key)
+    inserted_node = Node.new(key: key)
     if root.nil?
       self.root = inserted_node 
       return 
@@ -32,14 +32,14 @@ class BinarySearchTree
     while next_node 
       current_node = next_node 
 
-      if inserted_node.value <= current_node.value 
+      if inserted_node.key <= current_node.key 
         next_node = current_node.left 
       else
         next_node = current_node.right 
       end
     end
 
-    if inserted_node.value <= current_node.value
+    if inserted_node.key <= current_node.key 
       current_node.left = inserted_node 
     else
       current_node.right = inserted_node 
@@ -50,20 +50,20 @@ class BinarySearchTree
     nil
   end
 
-  # valueを値に持つノードを検索
-  def find(value)
+  # 指定されたキーを持つノードを検索
+  def find(key)
     return if self.root.nil? 
 
     next_node = self.root 
     current_node = nil 
     while next_node 
       current_node = next_node 
-      if value < current_node.value 
+      if key < current_node.key  
         next_node = current_node.left 
         next 
       end
 
-      if value > current_node.value  
+      if key > current_node.key 
         next_node = current_node.right 
         next 
       end
@@ -74,16 +74,16 @@ class BinarySearchTree
     nil
   end
 
-  # valueを値に持つノードを一つ削除
-  def delete(value)
-    node = self.find(value)
+  # 指定されたキーを持つノードを一つ削除
+  def delete(key)
+    node = self.find(key)
     return false if node.nil? 
 
     if node.left && node.right
       successor = find_successor(node)
-      successor_value = successor.value 
-      delete(successor_value)
-      node.value = successor_value 
+      successor_key = successor.key 
+      delete(successor_key)
+      node.key = successor_key
       return true 
     end
 
@@ -114,21 +114,21 @@ class BinarySearchTree
     true
   end
 
-  # value以上の最小の値を持つノードを検索
-  def lower_bound(value)
+  # key以上の最小のキーを持つノードを検索
+  def lower_bound(key)
     return if self.root.nil? 
 
     next_node = self.root 
     current_node = nil 
     while next_node 
       current_node = next_node 
-      if value > current_node.value 
+      if key > current_node.key 
         next_node = current_node.right 
         next 
       end
 
-      if current_node.left && value <= current_node.left.value 
-        next_node = current_node.left 
+      if current_node.left && key <= current_node.left.key 
+        next_node = current_node.left
         next 
       end
 
