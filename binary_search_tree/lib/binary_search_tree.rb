@@ -102,14 +102,40 @@ class BinarySearchTree
       return self.min(node.right)
     end
 
+    leftmost_ancestor(node).parent 
+  end
+
+  # 通りがけ順でnodeの前のノードを見つける
+  def predecessor(node)
+    return if node.nil? 
+
+    if node.left 
+      return self.max(node.left)
+    end
+
+    rightmost_ancestor(node).parent 
+  end
+
+  # nodeの祖先のうち、最も左側にあるノード
+  def leftmost_ancestor(node)
     next_node = node.parent 
     current_node = node 
     while next_node && next_node.right == current_node 
       current_node = next_node 
       next_node = current_node.parent 
     end
+    current_node 
+  end
 
-    current_node.parent 
+  # nodeの祖先のうち、最も右側にあるノード
+  def rightmost_ancestor(node)
+    next_node = node.parent 
+    current_node = node 
+    while next_node && next_node.left == current_node 
+      current_node = next_node 
+      next_node = current_node.parent 
+    end
+    current_node 
   end
 
   # 指定されたキーを持つノードを一つ削除
