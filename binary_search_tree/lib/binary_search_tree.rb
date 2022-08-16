@@ -74,6 +74,16 @@ class BinarySearchTree
     nil
   end
 
+  # 最小のキーを持つノードを検索
+  def min 
+    return if self.root.nil? 
+    node = self.root 
+    while node.left 
+      node = node.left 
+    end
+    node 
+  end
+
   # 指定されたキーを持つノードを一つ削除
   def delete(key)
     node = self.find(key)

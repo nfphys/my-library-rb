@@ -90,6 +90,21 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal bst.root.right.left, bst.find(120)
   end
 
+  def test_min_case1 
+    bst = BinarySearchTree.new
+    assert_nil bst.min 
+  end
+
+  def test_min_case2 
+    bst = BinarySearchTree.new([1])
+    assert_equal 1, bst.min.key
+  end
+
+  def test_min_case3 
+    bst = BinarySearchTree.new([100, 50, 200, 120])
+    assert_equal 50, bst.min.key
+  end
+
   def test_lower_bound_case1
     bst = BinarySearchTree.new 
     assert_nil bst.lower_bound(1)
