@@ -120,6 +120,12 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 200, bst.max.key
   end
 
+  def test_successor 
+    bst = BinarySearchTree.new([15, 6, 18, 3, 7, 17, 20, 2, 4, 13, 9])
+    assert_equal 17, bst.successor(bst.root).key
+    assert_equal 15, bst.successor(bst.root.left.right.right).key 
+  end
+
   def test_lower_bound_case1
     bst = BinarySearchTree.new 
     assert_nil bst.lower_bound(1)
