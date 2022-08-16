@@ -94,6 +94,24 @@ class BinarySearchTree
     max_node 
   end
 
+  # 通りがけ順でnodeの次のノードを見つける
+  def successor(node)
+    return if node.nil? 
+    
+    if node.right 
+      return self.min(node.right)
+    end
+
+    next_node = node.parent 
+    current_node = node 
+    while next_node && next_node.right == current_node 
+      current_node = next_node 
+      next_node = current_node.parent 
+    end
+
+    current_node.parent 
+  end
+
   # 指定されたキーを持つノードを一つ削除
   def delete(key)
     node = self.find(key)
@@ -216,20 +234,6 @@ class BinarySearchTree
     preorder
   end
 
-  # 通りがけ順でnodeの次のノードを見つける
-  def successor(node)
-    next_node = node.right 
-    current_node = nil 
-    while next_node 
-      current_node = next_node 
-      if current_node.left 
-        next_node = current_node.left
-        next 
-      end
-      break  
-    end
-    current_node
-  end
 
   private 
 
