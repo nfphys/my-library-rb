@@ -85,13 +85,13 @@ class BinarySearchTree
   end
 
   # 最大のキーを持つノードを検索
-  def max 
-    return if self.root.nil? 
-    node = self.root 
-    while node.right 
-      node = node.right 
+  def max(node=self.root)
+    return if node.nil? 
+    max_node = node
+    while max_node.right 
+      max_node = max_node.right 
     end
-    node 
+    max_node 
   end
 
   # 指定されたキーを持つノードを一つ削除
