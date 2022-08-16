@@ -74,7 +74,7 @@ class BinarySearchTree
     nil
   end
 
-  # 最小のキーを持つノードを検索
+  # nodeを根とする部分木において、最小のキーを持つノードを検索
   def min(node=self.root)
     return if node.nil? 
     min_node = node 
@@ -84,7 +84,7 @@ class BinarySearchTree
     min_node 
   end
 
-  # 最大のキーを持つノードを検索
+  # nodeを根とする部分木において、最大のキーを持つノードを検索
   def max(node=self.root)
     return if node.nil? 
     max_node = node
