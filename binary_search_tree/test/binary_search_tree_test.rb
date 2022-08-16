@@ -105,6 +105,21 @@ class BinarySearchTreeTest < Minitest::Test
     assert_equal 50, bst.min.key
   end
 
+  def test_max_case1 
+    bst = BinarySearchTree.new 
+    assert_nil bst.max 
+  end
+
+  def test_max_case2 
+    bst = BinarySearchTree.new([1])
+    assert_equal 1, bst.max.key 
+  end
+
+  def test_max_case3 
+    bst = BinarySearchTree.new([100, 50, 200, 120])
+    assert_equal 200, bst.max.key
+  end
+
   def test_lower_bound_case1
     bst = BinarySearchTree.new 
     assert_nil bst.lower_bound(1)
