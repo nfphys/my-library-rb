@@ -151,7 +151,7 @@ class BinarySearchTree
 
     if parent.nil? 
       self.root = pivot 
-      update_height(node)
+      # update_height(node)
       return 
     end
 
@@ -176,7 +176,7 @@ class BinarySearchTree
 
     if parent.nil? 
       self.root = pivot 
-      update_height(node)
+      # update_height(node)
       return 
     end
 
