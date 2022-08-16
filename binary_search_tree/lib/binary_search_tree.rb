@@ -75,13 +75,13 @@ class BinarySearchTree
   end
 
   # 最小のキーを持つノードを検索
-  def min 
-    return if self.root.nil? 
-    node = self.root 
-    while node.left 
-      node = node.left 
+  def min(node=self.root)
+    return if node.nil? 
+    min_node = node 
+    while min_node.left 
+      min_node = min_node.left 
     end
-    node 
+    min_node 
   end
 
   # 最大のキーを持つノードを検索
