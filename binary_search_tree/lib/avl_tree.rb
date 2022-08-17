@@ -2,8 +2,8 @@ require_relative 'binary_search_tree'
 
 class AVLTree < BinarySearchTree 
   # 指定されたキーを持つノードを挿入
-  def insert(key)
-    inserted_node = Node.new(key: key)
+  def insert(key, value=nil)
+    inserted_node = Node.new(key: key, value: value)
     if root.nil?
       self.root = inserted_node 
       return 
