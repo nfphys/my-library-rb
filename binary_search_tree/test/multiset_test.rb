@@ -7,12 +7,12 @@ class MultiSetTest < Minitest::Test
     assert MultiSet 
   end
 
-  def test_empty_case1
+  def test_empty_for_empty_multiset
     multiset = MultiSet.new 
     assert multiset.empty? 
   end
 
-  def test_empty_case2 
+  def test_empty_for_non_empty_multiset
     multiset = MultiSet.new([1, 2, 2])
     refute multiset.empty?
   end
