@@ -147,16 +147,16 @@ class BinarySearchTreeTest < Minitest::Test
 
   def test_lower_bound_case2
     bst = BinarySearchTree.new([1])
-    assert_equal bst.root, bst.lower_bound(1)
-    assert_equal bst.root, bst.lower_bound(0)
+    assert_equal 1, bst.lower_bound(1).key 
+    assert_equal 1, bst.lower_bound(0).key
     assert_nil bst.lower_bound(2)
   end
     
   def test_lower_bound_case3
     bst = BinarySearchTree.new([100, 50, 200, 120])
-    assert_equal bst.root, bst.lower_bound(90)
-    assert_equal bst.root.left, bst.lower_bound(49)
-    assert_equal bst.root.right.left, bst.lower_bound(115)
+    assert_equal 100, bst.lower_bound(90).key 
+    assert_equal 50, bst.lower_bound(49).key 
+    assert_equal 120, bst.lower_bound(115).key
     assert_nil bst.lower_bound(220)
   end
 
