@@ -32,4 +32,8 @@ class OrderedMap
       bst.insert(key, value)
     end
   end
+
+  def has_key?(key)
+    !!self.bst.find(key)
+  end
 end
