@@ -25,10 +25,16 @@ class BinarySearchTree
 
   # 指定されたキーを持つノードを挿入
   def insert(key, value=nil)
+    inserted_node = insert_node(key, value)
+    update_height(inserted_node)
+  end
+
+  private 
+  def insert_node(key, value)
     inserted_node = Node.new(key: key, value: value)
     if root.nil?
       self.root = inserted_node 
-      return 
+      return inserted_node 
     end
 
     next_node = self.root 
@@ -49,10 +55,10 @@ class BinarySearchTree
       current_node.right = inserted_node 
     end
 
-    update_height(current_node)
-
-    nil
+    inserted_node
   end
+
+  public
 
   # 指定されたキーを持つノードを検索
   def find(key)
