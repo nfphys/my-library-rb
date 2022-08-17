@@ -36,4 +36,8 @@ class OrderedMap
   def has_key?(key)
     !!self.bst.find(key)
   end
+
+  def delete(key)
+    bst.delete(key)
+  end
 end
