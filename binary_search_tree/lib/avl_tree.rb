@@ -38,9 +38,11 @@ class AVLTree < BinarySearchTree
 
     if node.left && node.right
       successor = self.successor(node)
-      successor_key = successor.key 
+      successor_key   = successor.key 
+      successor_value = successor.value 
       delete(successor_key)
-      node.key = successor_key
+      node.key   = successor_key
+      node.value = successor_value 
       return true 
     end
 
