@@ -3,6 +3,14 @@ require_relative '../lib/binary_search_tree'
 require 'minitest/autorun'
 
 class BinarySearchTreeTest < Minitest::Test 
+  def test_empty? 
+    bst = BinarySearchTree.new([])
+    assert bst.empty? 
+
+    bst = BinarySearchTree.new([1, 3, 2])
+    refute bst.empty?
+  end
+
   def test_insert_case1
     bst = BinarySearchTree.new([7, 12, 2, 5, 2, 8, 3, 6, 15, 11, 9])
     assert_equal [7, 2, 2, 5, 3, 6, 12, 8, 11, 9, 15], bst.to_preorder.map(&:key)

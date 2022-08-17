@@ -3,6 +3,10 @@ require_relative 'node'
 class BinarySearchTree
   attr_reader :root 
 
+  def empty? 
+    root.nil? 
+  end
+
   def root=(node)
     @root = node 
     node.parent = nil if node 
