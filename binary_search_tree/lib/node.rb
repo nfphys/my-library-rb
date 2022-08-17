@@ -3,6 +3,8 @@ class Node
 
   attr_accessor :value
 
+  attr_accessor :color 
+
   # selfを根とする部分木の高さ
   attr_reader :height 
 
@@ -15,14 +17,17 @@ class Node
   # selfの右の子ノード
   attr_reader :right 
 
-  def initialize(key:, value:nil)
+  def initialize(key:, value: nil, color: nil)
+    @key    = key 
+    @value  = value
+    @color  = color
+    @height = 0
     @parent = nil 
     @left   = nil  
     @right  = nil  
-    @key    = key 
-    @value  = value
-    @height = 0
   end
+
+  Nil = self.new(key: nil, color: :black)
 
   def left=(other)
     @left = other
@@ -58,11 +63,12 @@ class Node
   end
 
   def destroy 
-    @parent = nil 
-    @left   = nil  
-    @right  = nil  
     @key    = nil 
     @value  = nil
     @height = 0
+    @color  = nil
+    @parent = nil 
+    @left   = nil  
+    @right  = nil 
   end
 end
