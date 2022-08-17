@@ -10,4 +10,16 @@ class OrderedMapTest < Minitest::Test
   def test_initialize 
     assert OrderedMap.new
   end
+
+  def test_add_key_value_pair 
+    ordered_map = OrderedMap.new 
+
+    assert_nil ordered_map[1]
+    ordered_map[1] = "hoge"
+    assert_equal "hoge", ordered_map[1]
+
+    assert_nil ordered_map[3]
+    ordered_map[3] = "fuga"
+    assert_equal "fuga", ordered_map[3]
+  end
 end
