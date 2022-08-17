@@ -215,7 +215,6 @@ class BinarySearchTree
 
     if parent.nil? 
       self.root = pivot 
-      # update_height(node)
       return 
     end
 
@@ -224,7 +223,9 @@ class BinarySearchTree
     else 
       parent.right = pivot
     end
-    # update_height(node)
+    
+    node.update_height
+    pivot.update_height
   end
 
   # nodeを根とする部分木を右回転
@@ -240,7 +241,6 @@ class BinarySearchTree
 
     if parent.nil? 
       self.root = pivot 
-      # update_height(node)
       return 
     end
 
@@ -249,7 +249,9 @@ class BinarySearchTree
     else 
       parent.right = pivot 
     end
-    # update_height(node)
+    
+    node.update_height
+    pivot.update_height
   end
 
   # rootから出発して、二分探索木の各ノードを行きがけ順に並べる
