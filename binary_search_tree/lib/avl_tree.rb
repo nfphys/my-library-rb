@@ -56,30 +56,30 @@ class AVLTree < BinarySearchTree
       current_node.update_height 
       rotated = false
 
-      puts "before: #{current_node.balance_factor}"
+      # puts "before: #{current_node.balance_factor}"
       
       if self.require_double_left_rotation?(current_node)
-        puts "do double left rotation"
+        # puts "do double left rotation"
         self.right_rotation(current_node.right)
         self.left_rotation(current_node)
         rotated = true 
       elsif self.require_left_rotation?(current_node)
-        puts "do left rotation"
+        # puts "do left rotation"
         self.left_rotation(current_node)
         rotated = true 
       elsif self.require_double_right_rotation?(current_node)
-        puts "do double right rotation"
+        # puts "do double right rotation"
         self.left_rotation(current_node.left)
         self.right_rotation(current_node)
         rotated = true 
       elsif self.require_right_rotation?(current_node)
-        puts "do right rotation"
+        # puts "do right rotation"
         self.right_rotation(current_node) 
         rotated = true 
       end
 
-      puts "after: #{current_node.balance_factor}"
-      puts ""
+      # puts "after: #{current_node.balance_factor}"
+      # puts ""
       
       if rotated 
         next_node = current_node.parent.parent 
