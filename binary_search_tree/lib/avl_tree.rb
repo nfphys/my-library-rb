@@ -32,6 +32,45 @@ class AVLTree < BinarySearchTree
     nil
   end
 
+  def delete(key)
+    node = self.find(key)
+    return false if node.nil? 
+
+    if node.left && node.right
+      successor = self.successor(node)
+      successor_key = successor.key 
+      delete(successor_key)
+      node.key = successor_key
+      return true 
+    end
+
+    parent = node.parent 
+
+    child = nil 
+    if node.left 
+      child = node.left 
+    elsif node.right 
+      child = node.right 
+    end
+
+    if parent.nil? 
+      self.root = child 
+      node.destroy 
+      return true 
+    end
+
+    if parent.left == node 
+      parent.left  = child 
+    else 
+      parent.right = child 
+    end
+    node.destroy 
+
+    balance_height(parent)
+
+    true
+  end
+
   def balanced?(node=self.root)
     return true if node.nil? 
 
