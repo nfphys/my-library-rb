@@ -2,6 +2,14 @@ require_relative 'avl_tree'
 
 class OrderedMap 
 
+  def self.from_hash(hash)
+    ordered_map = self.new 
+    hash.each do |key, value|
+      ordered_map[key] = value 
+    end
+    ordered_map
+  end
+
   private 
   attr_reader :bst 
   public 

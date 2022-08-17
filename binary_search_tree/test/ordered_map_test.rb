@@ -22,4 +22,14 @@ class OrderedMapTest < Minitest::Test
     ordered_map[3] = "fuga"
     assert_equal "fuga", ordered_map[3]
   end
+
+  def test_from_hash 
+    hash = {
+      1 => "hoge", 
+      3 => "fuga",
+    }
+    ordered_map = OrderedMap.from_hash(hash)
+    assert_equal "hoge", ordered_map[1]
+    assert_equal "fuga", ordered_map[3]
+  end
 end
