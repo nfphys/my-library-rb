@@ -40,4 +40,10 @@ class OrderedMap
   def delete(key)
     bst.delete(key)
   end
+
+  def lower_bound(key)
+    node = bst.lower_bound(key)
+    return if node.nil? 
+    node.key 
+  end
 end

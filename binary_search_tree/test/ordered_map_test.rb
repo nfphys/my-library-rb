@@ -54,4 +54,17 @@ class OrderedMapTest < Minitest::Test
     ordered_map.delete(1)
     refute ordered_map.has_key?(1)
   end
+
+  def test_lower_bound 
+    hash = {
+      100 => "a", 
+      25  => "b",
+      70  => "c",
+      210 => "d",
+      107 => "e",
+    }
+    ordered_map = OrderedMap.from_hash(hash)
+    assert_equal 107, ordered_map.lower_bound(105)
+    assert_equal 70, ordered_map.lower_bound(52)
+  end
 end
