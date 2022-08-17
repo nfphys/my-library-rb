@@ -36,11 +36,11 @@ class MultiSet
   end
 
   def max 
-    bst.max 
+    bst.max.key 
   end
 
   def min 
-    bst.min 
+    bst.min.key 
   end
   
   private 
