@@ -35,11 +35,17 @@ class MultiSet
     node.value 
   end
 
+  def empty? 
+    bst.empty? 
+  end
+
   def max 
+    return if self.empty? 
     bst.max.key 
   end
 
   def min 
+    return if self.empty?
     bst.min.key 
   end
   

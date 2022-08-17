@@ -7,6 +7,16 @@ class MultiSetTest < Minitest::Test
     assert MultiSet 
   end
 
+  def test_empty_case1
+    multiset = MultiSet.new 
+    assert multiset.empty? 
+  end
+
+  def test_empty_case2 
+    multiset = MultiSet.new([1, 2, 2])
+    refute multiset.empty?
+  end
+
   def test_count
     multiset = MultiSet.new([1, 2, 2, 3, 3, 3])
     assert_equal 1, multiset.count(1)
@@ -14,9 +24,19 @@ class MultiSetTest < Minitest::Test
     assert_equal 3, multiset.count(3)
   end
 
+  def test_max_for_empty_multiset
+    multiset = MultiSet.new 
+    assert_nil multiset.max 
+  end
+
   def test_max 
     multiset = MultiSet.new([1, 2, 3, 3, 5, 5, 5, 6])
     assert_equal 6, multiset.max 
+  end
+
+  def test_min_for_empty_multiset
+    multiset = MultiSet.new 
+    assert_nil multiset.min
   end
 
   def test_min
