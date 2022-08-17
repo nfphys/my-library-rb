@@ -196,6 +196,7 @@ class BinarySearchTree
 
     next_node = self.root 
     current_node = nil 
+    optimal_node = nil 
     while next_node 
       current_node = next_node 
       if key > current_node.key 
@@ -203,15 +204,14 @@ class BinarySearchTree
         next 
       end
 
-      if current_node.left && key <= current_node.left.key 
+      if key <= current_node.key 
         next_node = current_node.left
+        optimal_node = current_node 
         next 
       end
-
-      return current_node 
     end
 
-    nil 
+    optimal_node 
   end
 
   # nodeを根とする部分木を左回転

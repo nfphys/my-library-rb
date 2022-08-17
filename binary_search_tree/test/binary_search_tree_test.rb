@@ -160,6 +160,11 @@ class BinarySearchTreeTest < Minitest::Test
     assert_nil bst.lower_bound(220)
   end
 
+  def test_lower_bound_case4 
+    bst = BinarySearchTree.new([100, 25, 70, 210, 107])
+    assert_equal 70, bst.lower_bound(52).key
+  end
+
   def test_delete_case1
     bst = BinarySearchTree.new 
     refute bst.delete(1)
