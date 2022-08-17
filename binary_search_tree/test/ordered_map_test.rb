@@ -65,6 +65,8 @@ class OrderedMapTest < Minitest::Test
     }
     ordered_map = OrderedMap.from_hash(hash)
     assert_equal 107, ordered_map.lower_bound(105)
-    assert_equal 70, ordered_map.lower_bound(52)
+    assert_equal "e", ordered_map[107]
+    assert_equal  70, ordered_map.lower_bound(52)
+    assert_equal "c", ordered_map[70]
   end
 end
