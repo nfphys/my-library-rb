@@ -59,4 +59,10 @@ class MultiSetTest < Minitest::Test
     multiset.delete(2, 10)
     assert_equal 0, multiset.count(2)
   end
+
+  def test_lower_bound 
+    multiset = MultiSet.new([100, 25, 70, 210, 107])
+    assert_equal 107, multiset.lower_bound(105)
+    assert_equal 70, multiset.lower_bound(52)
+  end
 end

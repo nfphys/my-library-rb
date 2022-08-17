@@ -2,6 +2,10 @@ require_relative 'avl_tree'
 
 class MultiSet 
 
+  private 
+  attr_reader :bst 
+  public 
+
   def initialize(ary=[])
     @bst = AVLTree.new
     ary.each do |key|
@@ -48,8 +52,10 @@ class MultiSet
     return if self.empty?
     bst.min.key 
   end
-  
-  private 
 
-  attr_reader :bst 
+  def lower_bound(key)
+    node = bst.lower_bound(key)
+    return if node.nil? 
+    node.key 
+  end
 end
