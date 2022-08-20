@@ -66,6 +66,13 @@ class QuasiMultiSetTest < Minitest::Test
     assert_equal  70, multiset.lower_bound(52)
     assert_equal  25, multiset.lower_bound(25)
     assert_nil multiset.lower_bound(1000)
+
+    assert_equal  25, multiset.lower_bound(25, k_th=1)
+    assert_equal  70, multiset.lower_bound(25, k_th=2)
+    assert_equal 100, multiset.lower_bound(25, k_th=3)
+    assert_equal 107, multiset.lower_bound(25, k_th=4)
+    assert_equal 210, multiset.lower_bound(25, k_th=5)
+    assert_nil multiset.lower_bound(25, k_th=6)
   end
 
   def test_upper_bound 
@@ -74,5 +81,12 @@ class QuasiMultiSetTest < Minitest::Test
     assert_equal 210, multiset.upper_bound(1000)
     assert_equal 107, multiset.upper_bound(107)
     assert_nil multiset.upper_bound(0)
+
+    assert_equal 210, multiset.upper_bound(210, k_th=1)
+    assert_equal 107, multiset.upper_bound(210, k_th=2)
+    assert_equal 100, multiset.upper_bound(210, k_th=3)
+    assert_equal  70, multiset.upper_bound(210, k_th=4)
+    assert_equal  25, multiset.upper_bound(210, k_th=5)
+    assert_nil multiset.upper_bound(210, k_th=6)
   end
 end

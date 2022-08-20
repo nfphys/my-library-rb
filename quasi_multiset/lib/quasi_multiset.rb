@@ -61,15 +61,38 @@ class QuasiMultiSet
     keys.first 
   end
 
-  def lower_bound(key)
-    keys.bsearch { |x| x >= key }
+  def lower_bound(key, k_th=1)
+    key_index = keys.bsearch_index { |x| x >= key }
+    return if key_index.nil?
+
+    while k_th > 0 && key_index < keys.size 
+      if count(keys[key_index]) >= k_th 
+        return keys[key_index]
+      else 
+        k_th -= count(keys[key_index])
+        key_index += 1 
+      end
+    end
+
+    nil 
   end
 
-  def upper_bound(key)
+  def upper_bound(key, k_th=1)
     key_index = keys.bsearch_index { |x| x > key }
-    return keys.last if key_index.nil? 
+    if key_index.nil? 
+      key_index = keys.size 
+    end
     key_index -= 1
-    return if key_index.negative? 
-    keys[key_index]
+
+    while k_th > 0 && key_index >= 0 
+      if count(keys[key_index]) >= k_th 
+        return keys[key_index]
+      else
+        k_th -= count(keys[key_index])
+        key_index -= 1 
+      end
+    end
+
+    nil
   end
 end
