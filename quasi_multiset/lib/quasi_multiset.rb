@@ -64,4 +64,10 @@ class QuasiMultiSet
   def lower_bound(key)
     keys.bsearch { |x| x >= key }
   end
+
+  def upper_bound(key)
+    key_index = keys.bsearch_index { |x| x > key } - 1
+    return if key_index.negative? 
+    keys[key_index]
+  end
 end

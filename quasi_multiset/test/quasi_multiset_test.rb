@@ -63,6 +63,14 @@ class QuasiMultiSetTest < Minitest::Test
   def test_lower_bound 
     multiset = QuasiMultiSet.new([100, 25, 70, 210, 107])
     assert_equal 107, multiset.lower_bound(105)
-    assert_equal 70, multiset.lower_bound(52)
+    assert_equal  70, multiset.lower_bound(52)
+    assert_equal  25, multiset.lower_bound(25)
+  end
+
+  def test_upper_bound 
+    multiset = QuasiMultiSet.new([100, 25, 70, 210, 107])
+    assert_equal 100, multiset.upper_bound(105)
+    assert_equal  25, multiset.upper_bound(52)
+    assert_equal 107, multiset.upper_bound(107)
   end
 end
