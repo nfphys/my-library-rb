@@ -5,10 +5,11 @@ class EuclideanAlgorithmTest < Minitest::Test
   include EuclideanAlgorithm 
 
   def test_gcd
-    assert_equal 1, gcd(2, 3)
-    assert_equal 3, gcd(6, 9)
-    assert_equal 2, gcd(32, 18)
-    assert_equal 1, gcd(3, -7)
+    10.times do 
+      a = rand(-100..100)
+      b = rand(-100..100)
+      assert_equal a.gcd(b), gcd(a, b)
+    end
   end
 
   def test_solve_bezout 
